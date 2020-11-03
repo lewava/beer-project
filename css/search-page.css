@@ -1,0 +1,121 @@
+body {
+  /* background: url(images/beer.jpg) no-repeat center center fixed;  */
+  /*     background-size: cover; */
+  background: #e2e9f4;
+}
+
+.menu {
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.5rem;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  letter-spacing: 1px;
+  margin-left: -75px;
+}
+
+ul {
+  list-style: none;
+}
+
+.link {
+  color: #707880;
+  float: left;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding-bottom: 0.25em;
+  margin: 0 3em 0 3em;
+  margin-bottom: 1px;
+}
+
+.link:after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  height: 3px;
+  width: 0;
+  background: transparent;
+  transition: width 0.5s ease, background-color 0.5s ease, left 0.5s ease;
+}
+
+.link:hover:after {
+  width: 100%;
+  left: 0;
+  background: #707880;
+}
+
+.link:visited {
+  color: #707880;
+}
+
+.container {
+  height: 90vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(67deg, #fffefe 0%, #c8d8e7 0%);
+  width: 15%;
+  border-radius: 5px;
+  border-style: outset;
+  padding: 10px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.label {
+  color: #707880;
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin-bottom: 0.75em;
+  padding-left: 0.25em;
+}
+
+.inner-container {
+  display: flex;
+  align-items: center;
+}
+
+.search {
+  background: url("../images/search.png") no-repeat center center;
+  width: 30%;
+  padding: 1em;
+  margin-right: 0.75em;
+  text-align: center;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-width: 3px;
+  border-radius: 5px;
+  border-style: outset;
+}
+
+.search:active {
+  border-style: inset;
+}
+
+.input {
+  color: #707880;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: none;
+  outline: none;
+  border-style: inset;
+  border-radius: 5px;
+  height: 2em;
+  width: 90%;
+  padding-left: 0.75em;
+}
+
+::placeholder {
+  font-size: 0.9rem;
+  color: #b3b9c0;
+}

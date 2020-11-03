@@ -4,6 +4,19 @@ body {
   background: #e2e9f4;
 }
 
+.container {
+  height: 90vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/*******************************
+            Menu
+********************************/
+
 .menu {
   display: flex;
   justify-content: center;
@@ -12,9 +25,6 @@ body {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   letter-spacing: 1px;
   margin-left: -75px;
-}
-
-ul {
   list-style: none;
 }
 
@@ -51,14 +61,9 @@ ul {
   color: #707880;
 }
 
-.container {
-  height: 90vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
+/*******************************
+            Search Box
+********************************/
 
 form {
   display: flex;

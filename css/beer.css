@@ -65,20 +65,23 @@ nav li {
 }
 
 
-nav a {
+nav button {
     color: #444;
     text-decoration: none;
     text-transform: uppercase;
     font-size: 14px;
+    border: none;
+    background-color: #55d6aa;
+    font-family:'Open Sans Condensed' ;
 
 }
 
-nav a:hover {
+nav button:hover {
     color: #000;
 
 }
 
-nav a::before {
+nav button::before {
     content: '';
     display: block;
     height: 5px;
@@ -90,7 +93,7 @@ nav a::before {
     transition: all ease-in-out 250ms;
 }
 
-nav a:hover::before {
+nav button:hover::before {
  width: 100%;
 
 }
@@ -111,10 +114,28 @@ nav a:hover::before {
     margin-left: auto;
     margin-right: auto;
 
+
+
 }
 
+.containerBody ul {
 
+    margin-top: 60px;
+    list-style: none;
+}
 
+.containerBody li {
+
+    width: 400px;
+
+}
+
+.textColumn {
+    
+    display: grid;
+    grid-template-columns: 50% 50%;
+    max-width: 400px ; 
+}
 
 .containerBody img {
   

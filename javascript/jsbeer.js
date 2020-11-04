@@ -1,9 +1,8 @@
 let beerID = 2;
 let url = `https://api.punkapi.com/v2/beers/${beerID}`;
 let urlRandom = `https://api.punkapi.com/v2/beers/random`;
-let beer;
-let randomButton = document.querySelector("#randomBeer");
 
+let randomButton = document.querySelector("#randomBeer");
 
 /* Get one beer */
 async function myFetch(url) {
@@ -18,8 +17,7 @@ async function myFetch(url) {
 //
 myFetch(url) 
 .then(data => {
-    beer = data[0];
-    
+  let beer = data[0];
 
 getBeerInformation(beer);
 
@@ -32,7 +30,7 @@ getBeerInformation(beer);
 let mainTag = document.querySelector('#beer-info');
 
 function getBeerInformation(beer) {
-
+    mainTag.innerHTML = "";
     let ulTag = document.createElement('ul');
     let imgTag = document.createElement('img');
     const beerInfo = [];
@@ -67,7 +65,9 @@ function getBeerInformation(beer) {
 
 //get ingredients to the beer 
 function allIngredients(beerIngredients) {
-    let ulTag = document.createElement('ul');
+    let divWrapper = document.createElement('div');
+    let ulTagHops = document.createElement('ul');
+    let ulTagMalt = document.createElement('ul');
     let h3TagHops = document.createElement('h3');
     h3TagHops.textContent = "Hops";
     let h3TagMalt = document.createElement('h3');
@@ -77,44 +77,43 @@ function allIngredients(beerIngredients) {
     let iYeast = beerIngredients.ingredients.yeast;
     
     
-    ulTag.appendChild(h3TagHops);
+    ulTagHops.appendChild(h3TagHops);
+    
     for(let i = 0; i < iHops.length; i++){
       
       let liTag = document.createElement('li');
         let hopsInfo = iHops[i].name +" "+ iHops[i].amount.value +" "+ iHops[i].amount.unit;
       
         liTag.textContent = hopsInfo;
-        ulTag.appendChild(liTag);
+        ulTagHops.appendChild(liTag);
     
     }
-    ulTag.appendChild(h3TagMalt);
+    ulTagMalt.appendChild(h3TagMalt);
     for(let i = 0; i < iMalt.length; i++){
         let liTag = document.createElement('li');        
         let maltInfo = iMalt[i].name + " "+ iMalt[i].amount.value + " "+ iMalt[i].amount.unit;
     
         liTag.textContent = maltInfo;   
-        ulTag.appendChild(liTag);
+        ulTagMalt.appendChild(liTag);
     }
-
-    return ulTag;
+    divWrapper.classList.add("textColumn");
+    divWrapper.appendChild(ulTagHops);
+    divWrapper.appendChild(ulTagMalt);
+    return divWrapper;
 
 
 }
-
-// random knappen
-
-randomButton.addEventListener('click', addRandomBeer(urlRandom));
-
-async function addRandomBeer(urlRandom) {
-  let newBeer = await myFetch(urlRandom);
-  console.log(urlRandom);
-  getBeerInformation(newBeer);
-}
+//random knappen   fr o m här funkar det ej 
+//PS. vi ville att länken i navbar skulle fungera som knapp. men har ej kommit så långt än
 
 
-
-
-
-
-
+randomButton.addEventListener('click', () => {
+   async function addRandomBeer(urlRandom) {
+    let newBeer = await myFetch(urlRandom);
+    console.log(urlRandom);
+    getBeerInformation(newBeer[0]);
+       
+    }
+    addRandomBeer(urlRandom);       
+});
 

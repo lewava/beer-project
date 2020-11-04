@@ -3,29 +3,39 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/search-page.css">
+    <link rel="stylesheet" href="css/search-page.css" />
     <title>Search page</title>
   </head>
   <body>
-
     <section class="container">
-
       <nav class="menu-container">
         <ul class="menu">
-            <li><a class="link" href="index.html">Random beer</a></li>
-            <li><a class="link" href="#">Beer search</a></li>
-            <li><a class="link" href="beer-info-page.html">Beer info</a></li>
+          <li><a class="link" href="index.html">Random beer</a></li>
+          <li><a class="link" href="#">Beer search</a></li>
+          <li><a class="link" href="beer-info-page.html">Beer info</a></li>
         </ul>
       </nav>
 
       <form action="#">
-        <label for="input" class="label" >Search for your favourite beer</label>
+        <label for="input" class="label">Search for your favourite beer</label>
         <section class="inner-container">
-          <input type="submit" class="search" value="">
-          <input type="text" class="input" placeholder="Favourite beer...">
-        </seciton>
-      </form>
+          <input type="submit" value="" class="search" />
+          <input type="text" class="input" placeholder="Favourite beer..." />
+        </section>
 
+        <section class="ul-container">
+          <button class="close"></button>
+
+          <ul class="list"></ul>
+
+          <p class="char-footer">
+            <span class="char-arrow left">◁&nbsp;</span
+            ><span class="counter">1</span> / 9<span class="char-arrow right"
+              >&nbsp;▷</span
+            >
+          </p>
+        </section>
+      </form>
     </section>
     <script src="javascript/search-page.js"></script>
   </body>

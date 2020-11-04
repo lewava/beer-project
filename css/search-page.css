@@ -124,3 +124,55 @@ form {
   font-size: 0.9rem;
   color: #b3b9c0;
 }
+
+.ul-container {
+  display: none;
+  flex-direction: column;
+
+}
+
+.close {
+  background: url("../images/close.png") no-repeat center center;
+  height: 3em;
+  width: 15%;
+  outline: none;
+  border: none;
+  border-style: outset;
+  align-self: flex-end;
+  margin: 0.5em 0.5em 0 0;
+}
+
+.close:active {
+  border-style: inset;
+}
+
+.list {
+  list-style: none;
+  color: #707880;
+  font-size: 1.1rem;
+  font-weight: 400;
+  padding-left: 0.5em;
+  margin-top: 0;
+}
+
+.li {
+  margin: 0.25em 0;
+}
+
+.li:hover{
+  cursor: pointer;
+}
+
+.char-footer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  color: #575d63;
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.char-arrow:hover {
+  cursor: pointer;
+}

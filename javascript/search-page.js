@@ -24,7 +24,7 @@ function checkInput() {
         const fetchHops = fetch(
           `https://api.punkapi.com/v2/beers?hops=${filteredInput}`
         );
-        const fetchMalt = fetch(
+        /* const fetchMalt = fetch(
           `https://api.punkapi.com/v2/beers?malt=${filteredInput}`
         );
         const fetchBB = fetch(
@@ -32,9 +32,9 @@ function checkInput() {
         );
         const fetchBA = fetch(
           `https://api.punkapi.com/v2/beers?brewed_after=${filteredInput}`
-        );
+        ); */
 
-        Promise.all([fetchName, fetchHops, fetchMalt, fetchBB, fetchBA])
+        Promise.all([fetchName])
           .then((values) => {
             return Promise.all(values.map((resp) => resp.json()));
           })
@@ -85,6 +85,10 @@ function getBeerNames(beers) {
 function changeCurrentPage(beerNames) {
   let currentPage = 1;
   let numberOfPages = Math.ceil(beerNames.length / 10);
+
+  if (numberOfPages === 0) {
+    numberOfPages = 1;
+  }
 
   counter.textContent = currentPage;
   document.querySelector(".pages").textContent = numberOfPages;

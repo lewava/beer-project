@@ -1,8 +1,11 @@
 let beerID = 2;
 let url = `https://api.punkapi.com/v2/beers/${beerID}`;
+let urlRandom = `https://api.punkapi.com/v2/beers/random`;
+let beer;
+let randomButton = document.querySelector("#randomBeer");
+
 
 /* Get one beer */
-
 async function myFetch(url) {
     let response = await fetch(url);
     
@@ -15,10 +18,10 @@ async function myFetch(url) {
 //
 myFetch(url) 
 .then(data => {
-    let beer = data[0];
+    beer = data[0];
     
 
-   getBeerInformation(beer);
+getBeerInformation(beer);
 
 })
 .catch(e => {
@@ -95,5 +98,23 @@ function allIngredients(beerIngredients) {
 
     return ulTag;
 
+
 }
+
+// random knappen
+
+randomButton.addEventListener('click', addRandomBeer(urlRandom));
+
+async function addRandomBeer(urlRandom) {
+  let newBeer = await myFetch(urlRandom);
+  console.log(urlRandom);
+  getBeerInformation(newBeer);
+}
+
+
+
+
+
+
+
 

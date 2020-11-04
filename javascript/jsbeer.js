@@ -1,9 +1,8 @@
 let beerID = 2;
 let url = `https://api.punkapi.com/v2/beers/${beerID}`;
 let urlRandom = `https://api.punkapi.com/v2/beers/random`;
-let beer;
-let randomButton = document.querySelector("#randomBeer");
 
+let randomButton = document.querySelector("#randomBeer");
 
 /* Get one beer */
 async function myFetch(url) {
@@ -18,8 +17,7 @@ async function myFetch(url) {
 //
 myFetch(url) 
 .then(data => {
-    beer = data[0];
-    
+  let beer = data[0];
 
 getBeerInformation(beer);
 
@@ -32,7 +30,7 @@ getBeerInformation(beer);
 let mainTag = document.querySelector('#beer-info');
 
 function getBeerInformation(beer) {
-
+    mainTag.innerHTML = "";
     let ulTag = document.createElement('ul');
     let imgTag = document.createElement('img');
     const beerInfo = [];
@@ -100,21 +98,17 @@ function allIngredients(beerIngredients) {
 
 
 }
-
-// random knappen
-
-randomButton.addEventListener('click', addRandomBeer(urlRandom));
-
-async function addRandomBeer(urlRandom) {
-  let newBeer = await myFetch(urlRandom);
-  console.log(urlRandom);
-  getBeerInformation(newBeer);
-}
+//random knappen   fr o m här funkar det ej 
+//PS. vi ville att länken i navbar skulle fungera som knapp. men har ej kommit så långt än
 
 
-
-
-
-
-
+randomButton.addEventListener('click', () => {
+   async function addRandomBeer(urlRandom) {
+    let newBeer = await myFetch(urlRandom);
+    console.log(urlRandom);
+    getBeerInformation(newBeer[0]);
+       
+    }
+    addRandomBeer(urlRandom);       
+});
 

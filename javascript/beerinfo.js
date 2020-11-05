@@ -1,10 +1,6 @@
-let beerID = 2;
-let url = `https://api.punkapi.com/v2/beers/${beerID}`;
-let urlRandom = `https://api.punkapi.com/v2/beers/random`;
+let url = `https://api.punkapi.com/v2/beers/1`; // import url
 
-let randomButton = document.querySelector("#randomBeer");
 
-/* Get one beer */
 async function myFetch(url) {
     let response = await fetch(url);
     
@@ -33,17 +29,20 @@ function getBeerInformation(beer) {
     mainTag.innerHTML = "";
     let ulTag = document.createElement('ul');
     let imgTag = document.createElement('img');
+    let h3Tag = document.createElement('h3');
+    let divTag = document.createElement('div');
+    h3Tag.textContent = beer.name;
     const beerInfo = [];
     imgTag.src = beer.image_url;
     
     let ingredients = allIngredients(beer);
 
     beerInfo[0] = beer.name;
-    beerInfo[1] = beer.description;
-    beerInfo[2] = `${beer.abv}%`;
-    beerInfo[3] = `${beer.volume.value} ${beer.volume.unit}`;
-    beerInfo[4] = `${beer.food_pairing[0]}, ${beer.food_pairing[1]} & ${beer.food_pairing[2]}`;
-    beerInfo[5] = `${beer.brewers_tips}, `
+    beerInfo[1] = `Description: ${beer.description}`;
+    beerInfo[2] = `Alcohol by volume: ${beer.abv}%`;
+    beerInfo[3] = `The volume of this bottle is: ${beer.volume.value}  ${beer.volume.unit}.`;
+    beerInfo[4] = `Goes well with: ${beer.food_pairing[0]}, ${beer.food_pairing[1]} & ${beer.food_pairing[2]}`;
+    beerInfo[5] = `Brewers tip: ${beer.brewers_tips}, `
    
     
 
@@ -57,9 +56,12 @@ function getBeerInformation(beer) {
         ulTag.appendChild(liTag);
     }
 
-    mainTag.appendChild(imgTag);
+    h3Tag.classList.add("beerName");
 
-    mainTag.appendChild(ulTag);
+    mainTag.appendChild(imgTag);
+    divTag.appendChild(h3Tag);
+    divTag.appendChild(ulTag);
+    mainTag.appendChild(divTag);
     mainTag.appendChild(ingredients);
 }
 
@@ -103,17 +105,3 @@ function allIngredients(beerIngredients) {
 
 
 }
-//random knappen   fr o m här funkar det ej 
-//PS. vi ville att länken i navbar skulle fungera som knapp. men har ej kommit så långt än
-
-
-randomButton.addEventListener('click', () => {
-   async function addRandomBeer(urlRandom) {
-    let newBeer = await myFetch(urlRandom);
-    console.log(urlRandom);
-    getBeerInformation(newBeer[0]);
-       
-    }
-    addRandomBeer(urlRandom);       
-});
-

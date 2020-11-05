@@ -7,7 +7,7 @@ const counter = document.querySelector(".counter");
 
 document.querySelector(".close").addEventListener("click", closeList);
 checkInput();
-
+ /*** vart är du? LEOOOON, skolan ekar tomt på leons */
 /**
  * Lägg till validation.
  */

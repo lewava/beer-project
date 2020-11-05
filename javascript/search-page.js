@@ -21,10 +21,10 @@ function checkInput() {
         const fetchName = fetch(
           `https://api.punkapi.com/v2/beers?beer_name=${filteredInput}`
         );
-        const fetchHops = fetch(
+/*         const fetchHops = fetch(
           `https://api.punkapi.com/v2/beers?hops=${filteredInput}`
         );
-        /* const fetchMalt = fetch(
+        const fetchMalt = fetch(
           `https://api.punkapi.com/v2/beers?malt=${filteredInput}`
         );
         const fetchBB = fetch(

@@ -1,0 +1,57 @@
+:root {
+    --lightGrey: rgb(184, 184, 184);
+}
+
+.card:hover {
+    box-shadow: 10px 10px 50px;
+}
+
+.card {
+
+    display: grid;
+    grid-template-columns: auto 300px;
+    grid-template-rows: 100px 100px 100px auto;
+    border: 3px solid black;
+    width: 500px;
+
+}
+
+.card img {
+    height: 80%;
+    grid-column: 1;
+    grid-row: 1/ span3;
+    margin: auto;
+
+
+}
+
+.card h3 {
+    grid-column: 2;
+    grid-row: 1;
+    background-color: var(--lightGrey);
+    margin: 0;
+    padding-top: 10px;
+    text-align: center;
+}
+
+.card .p1 {
+    grid-column: 2;
+    grid-row: 2/span2;
+    background-color: var(--lightGrey);
+    margin: 0;
+    padding: 0 10px;
+
+}
+.card .p2 {
+    grid-column: 2;
+    grid-row: 4;
+    text-align: center  ;
+    background-color: var(--lightGrey);
+}
+
+.random-button {
+    border: none;
+    background-color: var(--lightGrey);
+    width: 400px;
+    height: 30px;
+}

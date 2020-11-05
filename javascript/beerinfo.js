@@ -1,10 +1,6 @@
-let beerID = 2;
-let url = `https://api.punkapi.com/v2/beers/${beerID}`;
-let urlRandom = `https://api.punkapi.com/v2/beers/random`;
+let url = `https://api.punkapi.com/v2/beers/1`; // import url
 
-let randomButton = document.querySelector("#randomBeer");
 
-/* Get one beer */
 async function myFetch(url) {
     let response = await fetch(url);
     
@@ -109,17 +105,3 @@ function allIngredients(beerIngredients) {
 
 
 }
-//random knappen   fr o m här funkar det ej 
-//PS. vi ville att länken i navbar skulle fungera som knapp. men har ej kommit så långt än
-
-
-randomButton.addEventListener('click', () => {
-   async function addRandomBeer(urlRandom) {
-    let newBeer = await myFetch(urlRandom);
-    console.log(urlRandom);
-    getBeerInformation(newBeer[0]);
-       
-    }
-    addRandomBeer(urlRandom);       
-});
-

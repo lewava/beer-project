@@ -17,10 +17,27 @@
       </nav>
 
       <form action="#">
-        <label for="input" class="label">Search for your favourite beer</label>
+        <section class="select-container">
+          <label for="search-options" class="label">Select search method</label>
+          <select name="search-options" class="select">
+            <option value="name">Name</option>
+            <option value="hops">Hops</option>
+            <option value="malt">Malt</option>
+            <option value="brewed-before">Brewed before</option>
+            <option value="brewed-after">Brewed after</option>
+            <option value="abv-greater">ABV greater than</option>
+            <option value="abv-lesser">ABV lesser than</option>
+          </select>
+        </section>
+
         <section class="inner-container">
           <input type="submit" value="" class="search" />
-          <input type="text" class="input" placeholder="Favourite beer..." />
+          <input
+            name="input"
+            type="text"
+            class="input"
+            placeholder="Search word..."
+          />
         </section>
 
         <section class="ul-container">
@@ -30,9 +47,8 @@
 
           <p class="char-footer">
             <span class="char-arrow left">◁&nbsp;</span
-            ><span class="counter">1</span> / 9<span class="char-arrow right"
-              >&nbsp;▷</span
-            >
+            ><span class="counter">1</span> / <span class="pages">1</span
+            ><span class="char-arrow right">&nbsp;▷</span>
           </p>
         </section>
       </form>

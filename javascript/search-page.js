@@ -8,7 +8,29 @@ const select = document.querySelector("select");
 let currentPage = 1;
 
 document.querySelector(".close").addEventListener("click", closeList);
-checkInput();
+document.querySelector(".search").addEventListener("click", () => {
+  let filteredInput = input.value.trim().replace(" ", "_");
+
+  if (filteredInput !== "") {
+    getData(filteredInput)
+      .then((resp) => resp.json())
+      .then((data) => {
+        if (data.length === 0) {
+          alert("couldnt find your beer.");
+        } else {
+          let beerNames = getBeerNames(data);
+          changeCurrentPage(beerNames, data);
+          addItems(beerNames, currentPage);
+          listEvent(data);
+          ulContainer.style.display = "flex";
+          input.value = "";
+        }
+      })
+      .catch((err) => err.message);
+  } else {
+    alert("Input field is empty.");
+  }
+});
 
 function getData(input) {
   switch (select.value) {
@@ -31,28 +53,6 @@ function getData(input) {
   }
 }
 
-function checkInput() {
-  document.querySelector(".search").addEventListener("click", () => {
-    let filteredInput = input.value.trim().replace(" ", "_");
-
-    if (filteredInput !== "") {
-      getData(filteredInput)
-        .then((resp) => resp.json())
-        .then((data) => {
-          let beerNames = getBeerNames(data);
-          console.log(beerNames);
-          changeCurrentPage(beerNames);
-          addItems(beerNames, currentPage);
-          ulContainer.style.display = "flex";
-          input.value = "";
-        })
-        .catch((err) => err.message);
-    } else {
-      alert("Input field is empty.");
-    }
-  });
-}
-
 function getBeerNames(beers) {
   let beerNames = [];
   beers.forEach((element) => {
@@ -61,7 +61,7 @@ function getBeerNames(beers) {
   return beerNames;
 }
 
-function changeCurrentPage(beerNames) {
+function changeCurrentPage(beerNames, data) {
   let numberOfPages = Math.ceil(beerNames.length / 10);
 
   if (numberOfPages === 0) {
@@ -78,6 +78,7 @@ function changeCurrentPage(beerNames) {
       currentPage -= 1;
       counter.textContent = currentPage;
       addItems(beerNames, currentPage);
+      listEvent(data);
     }
   });
 
@@ -89,6 +90,7 @@ function changeCurrentPage(beerNames) {
       currentPage += 1;
       counter.textContent = currentPage;
       addItems(beerNames, currentPage);
+      listEvent(data);
     }
   });
 }
@@ -110,6 +112,22 @@ function addItems(beerNames, currentPage) {
       li.textContent = beerNames[i];
       ul.appendChild(li);
     }
+  }
+}
+
+function listEvent(data) {
+  const items = document.querySelectorAll(".li");
+  for (let i = 0; i < items.length; i++) {
+    const item = items[i];
+
+    item.addEventListener("click", () => {
+      data.forEach((element) => {
+        if (element.name === item.textContent) {
+          sessionStorage.setItem('object', JSON.stringify(element));
+          window.open("info-page.html", '_self');
+        }
+      });
+    });
   }
 }
 

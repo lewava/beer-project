@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/search-page.css" />
+    <title>Search page</title>
+  </head>
+  <body>
+    <section class="container">
+      <nav class="menu-container">
+        <ul class="menu">
+          <li><a class="link" href="beer-random.html">Random beer</a></li>
+          <li><a class="link" href="#">Beer search</a></li>
+          <li><a class="link" href="info-page.html">Beer info</a></li>
+        </ul>
+      </nav>
+
+      <form action="#">
+        <section class="select-container">
+          <label for="search-options" class="label">Select search method</label>
+          <select name="search-options" class="select">
+            <option value="name">Name</option>
+            <option value="hops">Hops</option>
+            <option value="malt">Malt</option>
+            <option value="brewed-before">Brewed before</option>
+            <option value="brewed-after">Brewed after</option>
+            <option value="abv-greater">ABV greater than</option>
+            <option value="abv-lesser">ABV lesser than</option>
+          </select>
+        </section>
+
+        <section class="inner-container">
+          <input type="submit" value="" class="search" />
+          <input
+            name="input"
+            type="text"
+            class="input"
+            placeholder="Search word..."
+          />
+        </section>
+
+        <section class="ul-container">
+          <button class="close"></button>
+
+          <ul class="list"></ul>
+
+          <p class="char-footer">
+            <span class="char-arrow left">◁&nbsp;</span
+            ><span class="counter">1</span>/<span class="pages">1</span
+            ><span class="char-arrow right">&nbsp;▷</span>
+          </p>
+        </section>
+      </form>
+    </section>
+    <script src="javascript/search-page.js"></script>
+  </body>
+</html>

@@ -24,21 +24,21 @@ function addInfo(obj) {
     "Volume:" + "&nbsp;" + obj.volume.value + "&nbsp;" + obj.volume.unit;
 
   obj.ingredients.hops.forEach((element) => {
-    let li = document.createElement("li");
+    const li = document.createElement("li");
     li.className = "info-li";
     li.textContent = element.name;
     hopsUl.appendChild(li);
   });
 
   for (const property in obj.ingredients) {
-    let li = document.createElement("li");
+    const li = document.createElement("li");
     li.className = "info-li";
     li.textContent = property;
     ingredientsUl.appendChild(li);
   }
 
   obj.food_pairing.forEach((element) => {
-    let li = document.createElement("li");
+    const li = document.createElement("li");
     li.className = "info-li";
     li.textContent = element;
     foodPairingUl.appendChild(li);

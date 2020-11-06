@@ -84,6 +84,10 @@ body {
   cursor: pointer;
 }
 
+.random-button:active {
+  border-style: inset;
+}
+
 .second-container {
   display: flex;
   flex-direction: column;

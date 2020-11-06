@@ -80,15 +80,10 @@ body {
     border-style: outset;
     padding: 10px;
     font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-    color: grey;
+    color: rgb(119, 119, 119);
     
 }   
 
-.random-button:active {
-    
-    outline: none;
-    border: none;
-  }
 
 
 .second-container {

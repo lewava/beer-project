@@ -16,6 +16,7 @@ const obj = JSON.parse(sessionStorage.getItem("object"));
 addInfo(obj);
 
 function addInfo(obj) {
+  console.log(obj);
   img.src = obj.image_url;
   name.textContent = obj.name;
   desc.textContent = obj.description;

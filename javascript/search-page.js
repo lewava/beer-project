@@ -132,6 +132,6 @@ function listEvent(data) {
 }
 
 function closeList() {
-  document.querySelector(".list").innerHTML = "";
+  ul.innerHTML = "";
   ulContainer.style.display = "none";
 }

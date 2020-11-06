@@ -12,6 +12,20 @@ document.querySelector(".search").addEventListener("click", (e) => {
   let filteredInput = input.value.trim().replace(" ", "_");
   e.preventDefault();
 
+  if(select.value === 'abv-lesser' && isNaN(filteredInput)) {
+    alert('To search on ABV you must use number.');
+    return;
+  } else if (select.value === 'abv-greater' && isNaN(filteredInput)) {
+    alert('To search on ABV you must use number.');
+    return;
+  } else if (select.value === 'abv-lesser' && filteredInput < 0) {
+    alert('Beers can only have an ABV between 0-100%');
+    return;
+  } else if (select.value === 'abv-greater' && filteredInput > 100) {
+    alert('Beers can only have an ABV between 0-100%');
+    return;
+  } 
+
   if (filteredInput !== "") {
     getData(filteredInput)
       .then((resp) => resp.json())

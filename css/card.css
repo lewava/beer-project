@@ -3,6 +3,13 @@ body {
     background: #e2e9f4;
  }
 
+
+
+/**************************************
+************** N A V  m e n u *********
+**************************************/  
+
+
  .container {
     display: flex;
  }
@@ -60,6 +67,41 @@ body {
         color: #707880;
 }
 
+/********************************
+**** R a n d o m  B U T T O N ***
+********************************/
+
+
+.random-button {
+    background: #c8d8e7 ;
+    width: 20%;
+    border-color: white;
+    border-radius: 5px;
+    border-style: outset;
+    padding: 10px;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    color: grey;
+    
+}   
+
+.random-button:active {
+    
+    outline: none;
+    border: none;
+  }
+
+
+.second-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+/*********************************
+************* C A R D ************
+*********************************/
 
 
 :root {
@@ -78,7 +120,10 @@ body {
     border-style: outset;
     margin-left: auto;
     margin-right: auto ;
+    margin-top: 5%;
     background-color: white;
+    
+
     
 }
 
@@ -115,24 +160,7 @@ body {
     background-color: var(--lightGrey);
 }
 
-
-.button {
-
-    align-content: center;
+.p2 {
+    color: white;
 }
-.random-button {
-    background: #c8d8e7 ;
-    width: 20%;
-    border-radius: 5px;
-    border-style: outset;
-    padding: 10px;
-    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-    color: grey;
-    
-}   
 
-.second-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}

@@ -8,6 +8,7 @@ body {
  }
 
  .menu-container {
+    margin-top: 5%;
     justify-content: center;
     margin-left: auto;
     margin-right: auto;
@@ -62,26 +63,23 @@ body {
 
 
 :root {
-    --lightGrey: rgb(184, 184, 184);
+    --lightGrey:#c8d8e7;
 }
 
-
-
-.card:hover {
-    box-shadow: 10px 10px 50px;
-}
 
 .card {
 
     display: grid;
     grid-template-columns: auto 300px;
     grid-template-rows: 100px 100px 100px auto;
-    border: 3px solid black;
     width: 500px;
+    border: solid #ccc;
+    border-radius: 10px;
+    border-style: outset;
     margin-left: auto;
     margin-right: auto ;
-    margin-top: 10%;
-
+    background-color: white;
+    
 }
 
 .card img {
@@ -89,7 +87,7 @@ body {
     grid-column: 1;
     grid-row: 1/ span3;
     margin: auto;
-
+    
 
 }
 
@@ -117,10 +115,18 @@ body {
     background-color: var(--lightGrey);
 }
 
+
+.button {
+
+    align-content: center;
+}
 .random-button {
-    border: none;
-    background-color: var(--lightGrey);
-    width: 400px;
-    height: 30px;
-   
+    background: #c8d8e7 ;
+    width: 20%;
+    border-radius: 5px;
+    border-style: outset;
+    padding: 10px;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    color: grey;
+    
 }   

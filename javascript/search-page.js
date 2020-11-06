@@ -144,6 +144,7 @@ function listEvent(data) {
     item.addEventListener("click", (e) => {
       data.forEach((element) => {
         if (element.name === item.textContent) {
+          sessionStorage.removeItem('object');
           sessionStorage.setItem("object", JSON.stringify(element));
           window.open("info-page.html", "_self");
         }

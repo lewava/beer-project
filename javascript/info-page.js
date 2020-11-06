@@ -11,9 +11,13 @@ const foodPairingUl = document.querySelector(".food-pairing-ul");
 const ingredientsUl = document.querySelector(".ingredients-ul");
 const hopsUl = document.querySelector(".hops-ul");
 
-const obj = JSON.parse(sessionStorage.getItem("object"));
+const searchObj = JSON.parse(sessionStorage.getItem("object"));
+const randomObj = JSON.parse(sessionStorage.getItem('object'));
 
-addInfo(obj);
+if (searchObj !== null)
+  addInfo(searchObj);
+if (randomObj !== null)
+  addInfo(randomObj);
 
 function addInfo(obj) {
   img.src = obj.image_url;

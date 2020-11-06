@@ -45,7 +45,9 @@ pTag.textContent = beer.description;
 pTag2.textContent = "see more";
 
 divTag.addEventListener('click', () => {
-   openBeerInfoPage(beer.id);
+    sessionStorage.removeItem('object');
+   sessionStorage.setItem('object', JSON.stringify(beer));
+   window.open("info-page.html", "_self");
 });
 
 divTag.appendChild(imgTag);
@@ -60,15 +62,8 @@ cardWrapper.appendChild(divTag);
 randomButton.addEventListener('click', () => {
     async function addRandomBeer(url) {
         let newBeer = await myFetch2(url);
-        console.log(newBeer);
         printBeerCard(newBeer[0]);
            
         }
         addRandomBeer(url); 
 });
-
-function openBeerInfoPage(BeerID) {
-    ID = BeerID;
-    window.open("beer-info-page.html");
-
-}

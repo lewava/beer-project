@@ -6,6 +6,11 @@ const right = document.querySelector(".right");
 const counter = document.querySelector(".counter");
 const select = document.querySelector("select");
 let currentPage = 1;
+let oldBeerNames = JSON.parse(sessionStorage.getItem("beerNames"));
+
+if (oldBeerNames !== null) {
+  addItems(oldBeerNames, currentPage);
+}
 
 document.querySelector(".close").addEventListener("click", closeList);
 document.querySelector(".search").addEventListener("click", (e) => {
@@ -37,7 +42,6 @@ document.querySelector(".search").addEventListener("click", (e) => {
           changeCurrentPage(beerNames, data);
           addItems(beerNames, currentPage);
           listEvent(data);
-          ulContainer.style.display = "flex";
           input.value = "";
         }
       })
@@ -73,6 +77,7 @@ function getBeerNames(beers) {
   beers.forEach((element) => {
     beerNames.push(element.name);
   });
+  sessionStorage.setItem('beerNames', JSON.stringify(beerNames));
   return beerNames;
 }
 
@@ -128,6 +133,7 @@ function addItems(beerNames, currentPage) {
       ul.appendChild(li);
     }
   }
+  ulContainer.style.display = "flex";
 }
 
 function listEvent(data) {

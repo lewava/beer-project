@@ -8,8 +8,9 @@ const select = document.querySelector("select");
 let currentPage = 1;
 
 document.querySelector(".close").addEventListener("click", closeList);
-document.querySelector(".search").addEventListener("click", () => {
+document.querySelector(".search").addEventListener("click", (e) => {
   let filteredInput = input.value.trim().replace(" ", "_");
+  e.preventDefault();
 
   if (filteredInput !== "") {
     getData(filteredInput)
@@ -132,6 +133,6 @@ function listEvent(data) {
 }
 
 function closeList() {
-  document.querySelector(".list").innerHTML = "";
+  ul.innerHTML = "";
   ulContainer.style.display = "none";
 }

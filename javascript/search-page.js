@@ -6,10 +6,13 @@ const right = document.querySelector(".right");
 const counter = document.querySelector(".counter");
 const select = document.querySelector("select");
 let currentPage = 1;
-let oldBeerNames = JSON.parse(sessionStorage.getItem("beerNames"));
+const oldBeerNames = JSON.parse(sessionStorage.getItem("beerNames"));
+const beerData = JSON.parse(sessionStorage.getItem("beerData"));
 
-if (oldBeerNames !== null) {
+if (oldBeerNames !== null && beerData !== null) {
+  changeCurrentPage(oldBeerNames, beerData);
   addItems(oldBeerNames, currentPage);
+  listEvent(beerData);
 }
 
 document.querySelector(".close").addEventListener("click", closeList);
@@ -72,12 +75,13 @@ function getData(input) {
   }
 }
 
-function getBeerNames(beers) {
+function getBeerNames(data) {
   let beerNames = [];
-  beers.forEach((element) => {
+  data.forEach((element) => {
     beerNames.push(element.name);
   });
   sessionStorage.setItem("beerNames", JSON.stringify(beerNames));
+  sessionStorage.setItem("beerData", JSON.stringify(data));
   return beerNames;
 }
 
@@ -144,7 +148,7 @@ function listEvent(data) {
     item.addEventListener("click", (e) => {
       data.forEach((element) => {
         if (element.name === item.textContent) {
-          sessionStorage.removeItem('object');
+          sessionStorage.removeItem("object");
           sessionStorage.setItem("object", JSON.stringify(element));
           window.open("info-page.html", "_self");
         }

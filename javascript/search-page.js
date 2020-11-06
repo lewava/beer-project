@@ -135,7 +135,8 @@ function listEvent(data) {
   for (let i = 0; i < items.length; i++) {
     const item = items[i];
 
-    item.addEventListener("click", () => {
+    item.addEventListener("click", (e) => {
+      
       data.forEach((element) => {
         if (element.name === item.textContent) {
           sessionStorage.setItem('object', JSON.stringify(element));

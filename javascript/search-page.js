@@ -17,19 +17,19 @@ document.querySelector(".search").addEventListener("click", (e) => {
   let filteredInput = input.value.trim().replace(" ", "_");
   e.preventDefault();
 
-  if(select.value === 'abv-lesser' && isNaN(filteredInput)) {
-    alert('To search on ABV you must use number.');
+  if (select.value === "abv-lesser" && isNaN(filteredInput)) {
+    alert("To search on ABV you must use number.");
     return;
-  } else if (select.value === 'abv-greater' && isNaN(filteredInput)) {
-    alert('To search on ABV you must use number.');
+  } else if (select.value === "abv-greater" && isNaN(filteredInput)) {
+    alert("To search on ABV you must use number.");
     return;
-  } else if (select.value === 'abv-lesser' && filteredInput < 0) {
-    alert('Beers can only have an ABV between 0-100%');
+  } else if (select.value === "abv-lesser" && filteredInput < 0) {
+    alert("Beers can only have an ABV between 0-100%");
     return;
-  } else if (select.value === 'abv-greater' && filteredInput > 100) {
-    alert('Beers can only have an ABV between 0-100%');
+  } else if (select.value === "abv-greater" && filteredInput > 100) {
+    alert("Beers can only have an ABV between 0-100%");
     return;
-  } 
+  }
 
   if (filteredInput !== "") {
     getData(filteredInput)
@@ -77,7 +77,7 @@ function getBeerNames(beers) {
   beers.forEach((element) => {
     beerNames.push(element.name);
   });
-  sessionStorage.setItem('beerNames', JSON.stringify(beerNames));
+  sessionStorage.setItem("beerNames", JSON.stringify(beerNames));
   return beerNames;
 }
 
@@ -142,18 +142,18 @@ function listEvent(data) {
     const item = items[i];
 
     item.addEventListener("click", (e) => {
-      
       data.forEach((element) => {
         if (element.name === item.textContent) {
-          sessionStorage.setItem('object', JSON.stringify(element));
-          window.open("info-page.html", '_self');
+          sessionStorage.setItem("object", JSON.stringify(element));
+          window.open("info-page.html", "_self");
         }
       });
     });
   }
 }
 
-function closeList() {
-  ul.innerHTML = "";
+function closeList(e) {
+  e.preventDefault();
   ulContainer.style.display = "none";
+  ul.innerHTML = "";
 }

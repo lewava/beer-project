@@ -1,6 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  /*   background: url(../images/beer.jpg) no-repeat center center fixed;
-  background-size: cover; */
   background: #e2e9f4;
 }
 
@@ -62,56 +65,45 @@ body {
 }
 
 /*******************************
+            Content
+********************************/
+
+.content-container {
+  display: flex;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  width: 50%;
+  margin-top: 5em;
+}
+
+/*******************************
             Form
 ********************************/
 
 form {
   display: flex;
   flex-direction: column;
+  width: 40%;
+  padding: 1.5em;
   background: linear-gradient(67deg, #fffefe 0%, #c8d8e7 0%);
-  width: 25%;
   border-radius: 5px;
   border-style: outset;
-  padding: 10px;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  border-right: none;
 }
 
-.select-container {
+.search-container {
   display: flex;
   justify-content: space-between;
 }
 
-.select {
-  width: 50%;
+h3 {
   color: #707880;
-  font-size: 0.9rem;
-  font-weight: 600;
-  border: none;
-  outline: none;
-  border-style: inset;
-  border-radius: 5px;
-  height: 2em;
-  padding-left: 0.75em;
-}
-
-.label {
-  color: #707880;
-  font-size: 1.1rem;
-  font-weight: 400;
-  margin-bottom: 0.75em;
-  padding-left: 0.5em;
-}
-
-.inner-container {
-  display: flex;
-  align-items: center;
+  width: 60%;
 }
 
 .search {
   background: url("../images/search.png") no-repeat center center;
-  width: 15%;
-  padding: 1em;
-  margin-right: 0.75em;
+  width: 20%;
+  min-height: 4em;
   text-align: center;
   border: none;
   outline: none;
@@ -125,17 +117,25 @@ form {
   border-style: inset;
 }
 
+label {
+  color: #707880;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-top: 0.5em;
+  margin-bottom: 0.25em;
+}
+
 .input {
   color: #707880;
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: 0.8em;
+  font-weight: 700;
   border: none;
   outline: none;
   border-style: inset;
   border-radius: 5px;
   height: 2em;
-  width: 80%;
-  padding-left: 0.75em;
+  width: 95%;
+  padding: 0 0.5em;
 }
 
 ::placeholder {
@@ -143,15 +143,25 @@ form {
   color: #b3b9c0;
 }
 
+/*******************************
+            Ul
+********************************/
+
 .ul-container {
   display: none;
   flex-direction: column;
+  width: 40%;
+  padding: 1em;
+  background: linear-gradient(67deg, #fffefe 0%, #c8d8e7 0%);
+  border-radius: 5px;
+  border-style: outset;
+  border-left: none;
 }
 
 .close {
   background: url("../images/close.png") no-repeat center center;
-  height: 3em;
-  width: 15%;
+  width: 20%;
+  min-height: 4em;
   outline: none;
   border: none;
   border-style: outset;

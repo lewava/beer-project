@@ -11,40 +11,38 @@ const foodPairingUl = document.querySelector(".food-pairing-ul");
 const ingredientsUl = document.querySelector(".ingredients-ul");
 const hopsUl = document.querySelector(".hops-ul");
 
-const searchObj = JSON.parse(sessionStorage.getItem("object"));
-// const randomObj = JSON.parse(sessionStorage.getItem("object"));
+const obj = JSON.parse(sessionStorage.getItem("object"));
 
-if (searchObj !== null) addInfo(searchObj);
-// if (randomObj !== null) addInfo(randomObj);
+addInfo(obj);
 
 function addInfo(obj) {
-  img.src = obj.image_url;
-  name.textContent = obj.name;
-  desc.textContent = obj.description;
-  abv.innerHTML = "Alcohol by volume: " + "&nbsp;" + obj.abv + "%";
-  volume.innerHTML =
-    "Volume:" + "&nbsp;" + obj.volume.value + "&nbsp;" + obj.volume.unit;
+    img.src = obj.image_url;
+    name.textContent = obj.name;
+    desc.textContent = obj.description;
+    abv.innerHTML = "Alcohol by volume: " + "&nbsp;" + obj.abv + "%";
+    volume.innerHTML =
+        "Volume:" + "&nbsp;" + obj.volume.value + "&nbsp;" + obj.volume.unit;
 
-  obj.ingredients.hops.forEach((element) => {
-    const li = document.createElement("li");
-    li.className = "info-li";
-    li.textContent = element.name;
-    hopsUl.appendChild(li);
-  });
+    obj.ingredients.hops.forEach((element) => {
+        const li = document.createElement("li");
+        li.className = "info-li";
+        li.textContent = element.name;
+        hopsUl.appendChild(li);
+    });
 
-  for (const property in obj.ingredients) {
-    const li = document.createElement("li");
-    li.className = "info-li";
-    li.textContent = property;
-    ingredientsUl.appendChild(li);
-  }
+    for (const property in obj.ingredients) {
+        const li = document.createElement("li");
+        li.className = "info-li";
+        li.textContent = property;
+        ingredientsUl.appendChild(li);
+    }
 
-  obj.food_pairing.forEach((element) => {
-    const li = document.createElement("li");
-    li.className = "info-li";
-    li.textContent = element;
-    foodPairingUl.appendChild(li);
-  });
+    obj.food_pairing.forEach((element) => {
+        const li = document.createElement("li");
+        li.className = "info-li";
+        li.textContent = element;
+        foodPairingUl.appendChild(li);
+    });
 
-  brewersTips.innerHTML = "Brewers tips:" + "&nbsp;" + obj.brewers_tips;
+    brewersTips.innerHTML = "Brewers tips:" + "&nbsp;" + obj.brewers_tips;
 }

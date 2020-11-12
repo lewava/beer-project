@@ -1,4 +1,5 @@
 const form = document.querySelector(".form");
+const inputs = document.querySelectorAll(".input");
 const closeUl = document.querySelector(".close");
 const search = document.querySelector(".search");
 const name = document.querySelector(".name");
@@ -13,6 +14,7 @@ const ul = document.querySelector(".list");
 const left = document.querySelector(".left");
 const right = document.querySelector(".right");
 const counter = document.querySelector(".counter");
+const pages = document.querySelector(".pages");
 const oldUrl = JSON.parse(sessionStorage.getItem("url"));
 const oldCurrentPage = JSON.parse(sessionStorage.getItem("currentPage"));
 let currentPage = 1;
@@ -43,10 +45,6 @@ function getData(url) {
     .then((resp) => resp.json())
     .then((data) => {
       const beerNames = getBeerNames(data);
-      if (beerNames.length === 0) {
-        alert("Couldn't find your beer.");
-        return;
-      }
       sessionStorage.setItem("url", JSON.stringify(url));
       addItems(beerNames);
       listEvent(data);
@@ -59,6 +57,7 @@ function searchEvent(event) {
   const val = validation();
   if (!val) return;
   const url = getInput();
+  calculateTotalPages(url);
   getData(url);
   changePages(url, currentPage);
 }
@@ -84,6 +83,7 @@ function addItems(beerNames) {
 
 function changePages(url, currentPage) {
   counter.textContent = currentPage;
+
   let newUrl = url;
   left.addEventListener("click", () => {
     if (currentPage === 1) {
@@ -105,7 +105,8 @@ function changePages(url, currentPage) {
   });
 
   right.addEventListener("click", () => {
-    if (currentPage === 100) {
+    if (currentPage == pages.textContent) {
+      currentPage = pages.textContent;
       counter.textContent = currentPage;
       newUrl =
         url.substring(0, 38) + currentPage + url.substring(39, url.length);
@@ -155,12 +156,8 @@ function validation(beerNames) {
 
   /*check if all inputs are empty*/
   let isEmpty = true;
-  Array.from(form).forEach((element) => {
-    if (
-      element.type === "text" ||
-      (element.type === "number" && element.value !== "")
-    )
-      isEmpty = false;
+  inputs.forEach((element) => {
+    if (element.value !== "") isEmpty = false;
   });
 
   if (isEmpty === true) {
@@ -202,11 +199,35 @@ function validation(beerNames) {
   }
 
   /*check if ABV is between 0-100*/
-  if (al.value <= 0 || ag.value >= 100) {
+  if (al.value !== "" && al.value <= 0) {
+    alert("ABV must be between 0-100%.");
+    validationApproved = false;
+    return validationApproved;
+  }
+
+  /*check if ABV is between 0-100*/
+  if (ag.value !== "" && ag.value >= 100) {
     alert("ABV must be between 0-100%.");
     validationApproved = false;
     return validationApproved;
   }
 
   return validationApproved;
+}
+
+/*Kanske inte det mest optimala sättet att räkna ut antalet sidor på... */
+function calculateTotalPages(url) {
+  let array = [];
+  let counter = 1;
+  while (counter < 100) {
+    checkUrl = url.substring(0, 38) + counter + url.substring(39, url.length);
+    fetch(checkUrl)
+      .then((resp) => resp.json())
+      .then((data) => {
+        if (data.length !== 0) array.push(data);
+        pages.textContent = array.length;
+      })
+      .catch((err) => err.message);
+    counter++;
+  }
 }

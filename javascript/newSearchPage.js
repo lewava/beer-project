@@ -58,9 +58,9 @@ function searchEvent(event) {
   event.preventDefault();
   const val = validation();
   if (!val) return;
-    const url = getInput();
-    getData(url);
-    changePages(url, currentPage);
+  const url = getInput();
+  getData(url);
+  changePages(url, currentPage);
 }
 
 function getBeerNames(data) {
@@ -200,5 +200,13 @@ function validation(beerNames) {
       return validationApproved;
     }
   }
+
+  /*check if ABV is between 0-100*/
+  if (al.value <= 0 || ag.value >= 100) {
+    alert("ABV must be between 0-100%.");
+    validationApproved = false;
+    return validationApproved;
+  }
+
   return validationApproved;
 }

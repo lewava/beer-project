@@ -97,13 +97,14 @@ form {
 
 h3 {
   color: #707880;
-  width: 60%;
+  width: 80%;
+  margin-right: 0.5em;
 }
 
 .search {
   background: url("../images/search.png") no-repeat center center;
   width: 20%;
-  min-height: 4em;
+  max-height: 4em;
   text-align: center;
   border: none;
   outline: none;
@@ -167,23 +168,31 @@ label {
   border-style: outset;
   align-self: flex-end;
   margin: 0.5em;
+  border-radius: 5px;
 }
 
 .close:active {
   border-style: inset;
 }
 
+.inner-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
 .list {
   list-style: none;
   color: #707880;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: 400;
   padding-left: 0.5em;
   margin-top: 0;
 }
 
 .li {
-  margin: 0.4em 0;
+  margin: 0.5em 0;
 }
 
 .li:hover {

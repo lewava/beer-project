@@ -1,3 +1,4 @@
+const form = document.querySelector(".form");
 const closeUl = document.querySelector(".close");
 const search = document.querySelector(".search");
 const name = document.querySelector(".name");
@@ -42,6 +43,10 @@ function getData(url) {
     .then((resp) => resp.json())
     .then((data) => {
       const beerNames = getBeerNames(data);
+      if (beerNames.length === 0) {
+        alert("Couldn't find your beer.");
+        return;
+      }
       sessionStorage.setItem("url", JSON.stringify(url));
       addItems(beerNames);
       listEvent(data);
@@ -51,9 +56,12 @@ function getData(url) {
 
 function searchEvent(event) {
   event.preventDefault();
-  const url = getInput();
-  getData(url);
-  changePages(url, currentPage);
+  const val = validation();
+  if (val) {
+    const url = getInput();
+    getData(url);
+    changePages(url, currentPage);
+  } else return;
 }
 
 function getBeerNames(data) {
@@ -141,4 +149,57 @@ function Caching(oldUrl, oldCurrentPage) {
 
 function closeList() {
   ulContainer.style.display = "none";
+}
+
+function validation(beerNames) {
+  let validationApproved = true;
+
+  /*check if all inputs are empty*/
+  let isEmpty = true;
+  Array.from(form).forEach((element) => {
+    if (
+      element.type === "text" ||
+      (element.type === "number" && element.value !== "")
+    )
+      isEmpty = false;
+  });
+
+  if (isEmpty === true) {
+    alert("You have to fill in atleast one search method.");
+    validationApproved = false;
+    return validationApproved;
+  }
+
+  /*check brewed before value*/
+  let regex = /^[0-9]{2}\-[0-9]{4}$/;
+  if (bb.value !== "" && !regex.test(bb.value)) {
+    alert("You must use the format MM-YYYY.");
+    validationApproved = false;
+    return validationApproved;
+  }
+
+  /*check brewed after value*/
+  if (ba.value !== "" && !regex.test(ba.value)) {
+    alert("You must use the format MM-YYYY.");
+    validationApproved = false;
+    return validationApproved;
+  }
+
+  /*check if brewed after is before brewed before*/
+  if (bb.value !== "" && ba.value !== "") {
+    if (bb.value <= ba.value) {
+      alert("Brewed after cannot be after brewed before.");
+      validationApproved = false;
+      return validationApproved;
+    }
+  }
+  /*check if ABV greater than is lesser ABV lesser than*/
+  if (al.value !== "" && ag.value !== "") {
+    if (parseInt(ag.value) >= parseInt(al.value)) {
+      alert("ABV lesser than cannot be lesser then ABV greater than.");
+      validationApproved = false;
+      return validationApproved;
+    }
+  }
+  return validationApproved;
 }

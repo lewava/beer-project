@@ -17,44 +17,86 @@
       </nav>
 
       <section class="content-container">
-        <form action="#">
-            <section class="search-container">
-                <h3>Fill in search method or methods that you want to use then click the button.</h3>
-                <input type="submit" value="" class="search">
-            </section>
-
-
+        <form action="#" class="form">
+          <section class="search-container">
+            <h3>
+              Fill in search method or methods that you want to use then click
+              the search button.
+            </h3>
+            <input type="submit" value="" class="search" />
+          </section>
 
           <label for="">Name</label>
-          <input name="input" type="text" class="input name" placeholder="Name"/>
+          <input
+            name="input"
+            type="text"
+            class="input name"
+            placeholder="Name"
+          />
 
           <label for="">Hops</label>
-          <input name="input" type="text" class="input hops" placeholder="Hops"/>
+          <input
+            name="input"
+            type="text"
+            class="input hops"
+            placeholder="Hops"
+          />
 
           <label for="">Malt</label>
-          <input name="input" type="text" class="input malt" placeholder="Malt"/>
+          <input
+            name="input"
+            type="text"
+            class="input malt"
+            placeholder="Malt"
+          />
 
           <label for="">Brewed Before</label>
-          <input name="input" type="text" class="input bb" placeholder="MM-YYYY"/>
+          <input
+            name="input"
+            type="text"
+            class="input bb"
+            placeholder="MM-YYYY"
+          />
 
           <label for="">Brewed After</label>
-          <input name="input" type="text" class="input ba" placeholder="MM-YYYY"/>
+          <input
+            name="input"
+            type="text"
+            class="input ba"
+            placeholder="MM-YYYY"
+          />
 
           <label for="">ABV lesser than</label>
-          <input name="input" type="text" class="input al" placeholder="Number"/>
+          <input
+            name="input"
+            type="number"
+            class="input al"
+            placeholder="Number"
+            min="0"
+            max="100"
+          />
 
           <label for="">ABV greater than</label>
-          <input name="input" type="text" class="input ag" placeholder="Number"/>
+          <input
+            name="input"
+            type="number"
+            class="input ag"
+            placeholder="Number"
+            min="0"
+            max="100"
+          />
         </form>
 
         <section class="ul-container">
-            <button class="close"></button>
+          <button class="close"></button>
+          <section class="inner-container">
             <ul class="list"></ul>
             <p class="char-footer">
-                <span class="char-arrow left">◁&nbsp;</span
-                ><span class="counter">1</span>/<span class="pages">1</span
-                ><span class="char-arrow right">&nbsp;▷</span>
-              </p>
+              <span class="char-arrow left">◁&nbsp;</span
+              ><span class="counter">1</span>/<span class="pages">1</span
+              ><span class="char-arrow right">&nbsp;▷</span>
+            </p>
+          </section>
         </section>
       </section>
     </section>

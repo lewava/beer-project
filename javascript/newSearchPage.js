@@ -86,7 +86,7 @@ function changePages(url, currentPage) {
 
   let newUrl = url;
   left.addEventListener("click", () => {
-    if (currentPage === 1) {
+    if (currentPage == 1) {
       counter.textContent = currentPage;
       newUrl =
         url.substring(0, 38) + currentPage + url.substring(39, url.length);
@@ -145,6 +145,7 @@ function Caching(oldUrl, oldCurrentPage) {
   if (oldCurrentPage === null) oldCurrentPage = 1;
   getData(oldUrl);
   changePages(oldUrl, oldCurrentPage);
+  calculateTotalPages(oldUrl);
 }
 
 function closeList() {

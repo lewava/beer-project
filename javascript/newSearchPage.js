@@ -57,11 +57,10 @@ function getData(url) {
 function searchEvent(event) {
   event.preventDefault();
   const val = validation();
-  if (val) {
+  if (!val) return;
     const url = getInput();
     getData(url);
     changePages(url, currentPage);
-  } else return;
 }
 
 function getBeerNames(data) {

@@ -29,13 +29,13 @@ search.addEventListener("click", searchEvent);
 function getInput() {
   let url = `https://api.punkapi.com/v2/beers?page=1&per_page=10&`;
 
-  if (name.value !== "") url += `beer_name=${name.value}&`;
-  if (hops.value !== "") url += `hops=${hops.value}&`;
-  if (malt.value !== "") url += `malt=${malt.value}&`;
-  if (bb.value !== "") url += `brewed_before=${bb.value}&`;
-  if (ba.value !== "") url += `brewed_after=${ba.value}&`;
-  if (al.value !== "") url += `abv_lt=${al.value}&`;
-  if (ag.value !== "") url += `abv_gt=${ag.value}&`;
+  if (name.value !== "") url += `beer_name=${name.value.trim()}&`;
+  if (hops.value !== "") url += `hops=${hops.value.trim()}&`;
+  if (malt.value !== "") url += `malt=${malt.value.trim()}&`;
+  if (bb.value !== "") url += `brewed_before=${bb.value.trim()}&`;
+  if (ba.value !== "") url += `brewed_after=${ba.value.trim()}&`;
+  if (al.value !== "") url += `abv_lt=${al.value.trim()}&`;
+  if (ag.value !== "") url += `abv_gt=${ag.value.trim()}&`;
 
   return url;
 }
@@ -152,7 +152,7 @@ function closeList() {
   ulContainer.style.display = "none";
 }
 
-function validation(beerNames) {
+function validation() {
   let validationApproved = true;
 
   /*check if all inputs are empty*/
